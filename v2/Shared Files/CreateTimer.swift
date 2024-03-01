@@ -20,9 +20,10 @@ class CreateTimer: NSObject, ObservableObject{
         let dataArr = [150.0, 160.0, 170.0, 150.0]
         self.currentData = dataArr[index]
         
-        determineHaptics(patternObject: patternObject, val: self.currentData)
+        var currHaptic = determineHaptics(patternObject: patternObject, val: self.currentData)
         
-
+        self.connector.sendDataToWatch(sendObject: currHaptic)
+        
         index += 1
         
         Timer.scheduledTimer(withTimeInterval: patternObject.timeOverall, repeats: true){ timer in
@@ -42,39 +43,35 @@ class CreateTimer: NSObject, ObservableObject{
             }
             
             self.currentData = dataArr[index]
-            self.determineHaptics(patternObject: patternObject, val: self.currentData)
+            let newHaptic = self.determineHaptics(patternObject: patternObject, val: self.currentData)
+            
+            if newHaptic != currHaptic{
+                self.connector.sendDataToWatch(sendObject: currHaptic)
+                currHaptic = newHaptic
+            }
             
             index += 1
         }
     }
     
     // Determine which haptic pattern to play and for how li=ong given a value
-    public func determineHaptics(patternObject: Pattern, val: Double){
-        var currPattern: [Haptics]
-        var timeBetween: [Double]
-        
+    public func determineHaptics(patternObject: Pattern, val: Double) -> MadePattern {
         let target = patternObject.target
         
         if val < (target - patternObject.range){
-            currPattern = patternObject.underPattern.HapticArray
-            timeBetween = patternObject.underPattern.duration
-            print("under: \(val)")
+            return patternObject.underPattern
         }
         else if val > (target + patternObject.range){
-            currPattern = patternObject.abovePattern.HapticArray
-            timeBetween = patternObject.abovePattern.duration
-            print("above: \(val)")
+            return patternObject.abovePattern
         }
         else {
-            currPattern = patternObject.atPattern.HapticArray
-            timeBetween = patternObject.atPattern.duration
-            print("at: \(val)")
+            return patternObject.atPattern
         }
         
-        self.sendPatternToWatch(patternObject: patternObject,currPattern: currPattern, timeBetweenArr: timeBetween)
+//        self.sendPatternToWatch(patternObject: patternObject,currPattern: currPattern, timeBetween: timeBetween)
     }
     
-    public func sendPatternToWatch(patternObject: Pattern, currPattern: [Haptics], timeBetweenArr: [Double]){
+    public func sendPatternToWatch(patternObject: Pattern, currPattern: [Haptics], timeBetween: Double){
         
         print("send pattern")
         if currPattern.count == 0{
@@ -85,7 +82,6 @@ class CreateTimer: NSObject, ObservableObject{
         
         var index = 0
         var timeIndex = 0
-        var timeBetween = timeBetweenArr[timeIndex]
         Timer.scheduledTimer(withTimeInterval: timeBetween, repeats: true) { timer in
             
             // Contitions to end timer
@@ -101,7 +97,6 @@ class CreateTimer: NSObject, ObservableObject{
                 let currHaptic = currPattern[index % currPattern.count]
                 index += 1
                 timeIndex += 1
-                timeBetween = timeBetweenArr[timeIndex % timeBetweenArr.count]
         }
         
         

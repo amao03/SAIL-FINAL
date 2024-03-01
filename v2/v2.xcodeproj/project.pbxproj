@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		41D022232B8D921C0000E9D1 /* TestSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D022222B8D921C0000E9D1 /* TestSetupView.swift */; };
 		41D022272B8D93910000E9D1 /* SavedTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D022262B8D93910000E9D1 /* SavedTestsView.swift */; };
+		682C796A2B91965800D6CA7C /* PlayHapticsOnWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C79682B91963F00D6CA7C /* PlayHapticsOnWatch.swift */; };
+		682C796B2B9197B900D6CA7C /* CreateTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDBF2B753B4000812B57 /* CreateTimer.swift */; };
 		6838EEBF2B6BF03D00E94268 /* v2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838EEBE2B6BF03D00E94268 /* v2App.swift */; };
 		6838EEC12B6BF03D00E94268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838EEC02B6BF03D00E94268 /* ContentView.swift */; };
 		6838EEC32B6BF04000E94268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6838EEC22B6BF04000E94268 /* Assets.xcassets */; };
@@ -83,9 +85,6 @@
 		6838EFAC2B6BF7B900E94268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6838EF422B6BF43600E94268 /* Main.storyboard */; };
 		6838EFAD2B6BF7CD00E94268 /* PerformanceMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838EF3E2B6BF43600E94268 /* PerformanceMonitorViewController.swift */; };
 		6838EFB02B6BF85800E94268 /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838EFAE2B6BF85500E94268 /* BluetoothView.swift */; };
-		68A326852B72A43B00023834 /* PlayHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A326842B72A43B00023834 /* PlayHaptics.swift */; };
-		68BEEDC02B753B4000812B57 /* CreateTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDBF2B753B4000812B57 /* CreateTimer.swift */; };
-		68BEEDC12B753B4000812B57 /* CreateTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDBF2B753B4000812B57 /* CreateTimer.swift */; };
 		68BEEDC82B7FE85600812B57 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDC72B7FE85600812B57 /* FetchData.swift */; };
 		68BEEDCA2B8AFE2600812B57 /* PlayOnWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDC92B8AFE2600812B57 /* PlayOnWatch.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +116,7 @@
 /* Begin PBXFileReference section */
 		41D022222B8D921C0000E9D1 /* TestSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSetupView.swift; sourceTree = "<group>"; };
 		41D022262B8D93910000E9D1 /* SavedTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTestsView.swift; sourceTree = "<group>"; };
+		682C79682B91963F00D6CA7C /* PlayHapticsOnWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayHapticsOnWatch.swift; sourceTree = "<group>"; };
 		6838EEBB2B6BF03D00E94268 /* v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6838EEBE2B6BF03D00E94268 /* v2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = v2App.swift; sourceTree = "<group>"; };
 		6838EEC02B6BF03D00E94268 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 		6838EF432B6BF43600E94268 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6838EF452B6BF43600E94268 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6838EFAE2B6BF85500E94268 /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
-		68A326842B72A43B00023834 /* PlayHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayHaptics.swift; sourceTree = "<group>"; };
 		68BEEDBF2B753B4000812B57 /* CreateTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimer.swift; sourceTree = "<group>"; };
 		68BEEDC72B7FE85600812B57 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		68BEEDC92B8AFE2600812B57 /* PlayOnWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayOnWatch.swift; sourceTree = "<group>"; };
@@ -279,9 +278,9 @@
 				6838EED52B6BF0BC00E94268 /* MadePatterns.swift */,
 				6838EEE02B6BF23600E94268 /* ConnectToWatch.swift */,
 				6838EF012B6BF31B00E94268 /* TimerControl.swift */,
-				68A326842B72A43B00023834 /* PlayHaptics.swift */,
 				6838EF042B6BF33000E94268 /* ExtendedSession.swift */,
 				68BEEDBF2B753B4000812B57 /* CreateTimer.swift */,
+				682C79682B91963F00D6CA7C /* PlayHapticsOnWatch.swift */,
 			);
 			path = "Shared Files";
 			sourceTree = "<group>";
@@ -533,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6838EF7C2B6BF48500E94268 /* IntervalType.swift in Sources */,
+				682C796B2B9197B900D6CA7C /* CreateTimer.swift in Sources */,
 				6838EEDD2B6BF12900E94268 /* SelectPatterns.swift in Sources */,
 				6838EF852B6BF4A100E94268 /* RowingAdditionalStatus1.swift in Sources */,
 				6838EF982B6BF4D700E94268 /* C2Power+Parsing.swift in Sources */,
@@ -589,7 +589,6 @@
 				6838EF802B6BF49000E94268 /* WorkoutState.swift in Sources */,
 				6838EFA32B6BF4F600E94268 /* Types.swift in Sources */,
 				6838EF872B6BF4A600E94268 /* RowingHeartRateBeltInformation.swift in Sources */,
-				68BEEDC02B753B4000812B57 /* CreateTimer.swift in Sources */,
 				41D022232B8D921C0000E9D1 /* TestSetupView.swift in Sources */,
 				6838EF822B6BF49600E94268 /* RowingState.swift in Sources */,
 				6838EF9A2B6BF4DD00E94268 /* C2StrokeCount+Parsing.swift in Sources */,
@@ -609,10 +608,9 @@
 				6838EEFD2B6BF2E300E94268 /* Patterns.swift in Sources */,
 				6838EEFF2B6BF2E900E94268 /* Haptics.swift in Sources */,
 				6838EEE92B6BF25800E94268 /* v2_watchApp.swift in Sources */,
-				68A326852B72A43B00023834 /* PlayHaptics.swift in Sources */,
-				68BEEDC12B753B4000812B57 /* CreateTimer.swift in Sources */,
 				68BEEDCA2B8AFE2600812B57 /* PlayOnWatch.swift in Sources */,
 				6838EEF92B6BF2C400E94268 /* WatchLandingView.swift in Sources */,
+				682C796A2B91965800D6CA7C /* PlayHapticsOnWatch.swift in Sources */,
 				6838EF002B6BF2ED00E94268 /* ConnectToWatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,7 +754,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"v2/Preview Content\"";
-				DEVELOPMENT_TEAM = UC5QT5DAYT;
+				DEVELOPMENT_TEAM = KT6L52LDDC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Our app uses bluetooth to find, connect and transfer data between different devices";
@@ -770,7 +768,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SAIL.v2;
+				PRODUCT_BUNDLE_IDENTIFIER = SAIL.v2a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -787,7 +785,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"v2/Preview Content\"";
-				DEVELOPMENT_TEAM = UC5QT5DAYT;
+				DEVELOPMENT_TEAM = KT6L52LDDC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Our app uses bluetooth to find, connect and transfer data between different devices";
@@ -817,19 +815,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"v2-watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UC5QT5DAYT;
+				DEVELOPMENT_TEAM = KT6L52LDDC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "v2-watch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "v2-watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SAIL.v2;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SAIL.v2a;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SAIL.v2.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = SAIL.v2a.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -848,13 +846,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"v2-watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UC5QT5DAYT;
+				DEVELOPMENT_TEAM = KT6L52LDDC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "v2-watch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "v2-watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SAIL.v2;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SAIL.v2a;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

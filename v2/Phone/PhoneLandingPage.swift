@@ -13,6 +13,7 @@ struct Phone_Landing_View : View{
 //    var pairedDevice:PerformanceMonitor?
 //    @ObservedObject var connector = ConnectToWatch.connect
 //    @State var deviceArr:Array<PerformanceMonitor>
+    @State var timer = CreateTimer().connector
     @State var pm:FetchData
     @State var patternObject = Pattern()
     @State private var realData:Bool = false
@@ -30,7 +31,7 @@ struct Phone_Landing_View : View{
 //                        Text("Target")
 //                        TextField("",value: $patternObject.target, format: .number).multilineTextAlignment(.trailing)
 //                    }
-//                    
+                    
 //                    HStack{
 //                        Text("Range")
 //                        TextField("",value: $patternObject.range, format: .number).multilineTextAlignment(.trailing)
@@ -45,7 +46,7 @@ struct Phone_Landing_View : View{
 //                        Text("**Selected:** \(patternObject.underPattern.name)")
 //                        Text("**Description:** \(patternObject.underPattern.description)")
 //                    })
-//                    
+                    
 //                    Section("At Pattern", content: {
 //                        NavigationLink(destination: {
 //                            MadeHapticsSelector(selectedItems: $patternObject.atPattern)
@@ -55,7 +56,7 @@ struct Phone_Landing_View : View{
 //                        Text("**Selected:** \(patternObject.atPattern.name)")
 //                        Text("**Description:** \(patternObject.atPattern.description)")
 //                    })
-//                    
+                    
 //                    Section("Above Pattern", content: {
 //                        NavigationLink(destination: {
 //                            MadeHapticsSelector(selectedItems: $patternObject.abovePattern)
@@ -65,22 +66,25 @@ struct Phone_Landing_View : View{
 //                        Text("**Selected:** \(patternObject.abovePattern.name)")
 //                        Text("**Description:** \(patternObject.abovePattern.description)")
 //                    })
-//                    
+                    
 //                    Section("Overall Time", content: {
 //                        HStack{
 //                            Text("Between each pattern")
 //                            TextField("",value: $patternObject.timeOverall, format: .number).multilineTextAlignment(.trailing)
 //                        }
 //                    })
-//                    
-//                    Button(action:{
+                    
+                    Button(action:{
 //                        pm.getPower()
-//                        
-//                    }){
-//                        Text("Start")
-//                    }
+//                        timer.startTimer(patternObject: patternObject, realData: realData, randomData: randomData)
+                    }){
+                        Text("Start")
+                    }
+                    
                 }
-            }.navigationTitle("Custom Haptics")
+            }
+
+//            .navigationTitle("Custom Haptics")
         }
     }
 }

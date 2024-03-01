@@ -17,6 +17,9 @@ class PlayOnWatch {
     
     
     func playOnWatch(pattern:MadePattern){
+        if ConnectToWatch.connect.updating{
+            
+        }
             if pattern.HapticArray.count == 0{
                 Timer.scheduledTimer(withTimeInterval: pattern.duration, repeats: false) { timer in
                 }

@@ -16,6 +16,8 @@ struct Watch_Landing_View : View {
     @State private var realData:Bool = false
     @State private var randomData:Bool = false
     
+    @State private var endTime:Bool = false
+    
    private var backgroundColor = Color.black
 
     private func update(){
@@ -24,47 +26,53 @@ struct Watch_Landing_View : View {
                 ConnectToWatch.connect.updating = false
                 timer.invalidate()
         }
+        endTime = true
+        playOnWatch()
+    }
+    
+    private func playOnWatch(){
+        print("playing timer")
+        var index = 0
+        Timer.scheduledTimer(withTimeInterval: ConnectToWatch.connect.pattern.duration, repeats: true){ timer in
+                if endTime {
+                    print("end curr timer")
+                    timer.invalidate()
+                    endTime = false
+                    ExtendedSession().stopExtendedSession()
+                    return
+                }
+            
+            
+                ConnectToWatch.connect.updating = false
+            
+            let currHaptic = connector.pattern.HapticArray[index % connector.pattern.HapticArray.count]
+            Haptics.play(currHaptic: currHaptic)
+            index += 1
+        }
     }
     
     var body: some View {
         NavigationView{
             VStack{
-                    if ConnectToWatch.connect.receivedInitial{
-                        ScrollView{
-                            VStack{
-                                if ConnectToWatch.connect.updating{
-                                    let _ = self.update()
-                                    Text("updating...")
-                                }
-                                Toggle("Real data", isOn: $realData)
-                                Toggle("Random data", isOn: $randomData)
-                                if timerObj.end{
-                                    Button(action:{
-                                        print("starting....")
-                                        timerObj.toggleEnd()
-                                        timerObj.setPattern(pattern: connector.pattern)
-//                                        timerObj.overallTimer(realData: realData, randomData: randomData)
-                                    }){
-                                        Text("Start")
-                                    }
-                                }
-                                else{
-                                    Button(action:{
-                                        timerObj.toggleEnd()
-                                        print("stopping")
-                                    }){
-                                        Text("stop")
-                                    }
-                                }
-                                Text("**Pattern:** \n \(connector.pattern.description)")
-                                
-                                Text("currData: \(timerObj.currentData, specifier: "%.2f")")
+                if ConnectToWatch.connect.receivedInitial{
+                    ScrollView{
+                        VStack{
+                            let _ = self.update()
+                            if ConnectToWatch.connect.updating{
+                                let _ = self.update()
+                                Text("updating...")
                             }
+                            Toggle("Real data", isOn: $realData)
+                            Toggle("Random data", isOn: $randomData)
+                            Text("**Pattern:** \n \(connector.pattern.description)")
+                                
+                            Text("currData: \(timerObj.currentData, specifier: "%.2f")")
                         }
                     }
-                    else{
-                        Text("awaiting info from phone")
-                    }
+                }
+                else{
+                    Text("awaiting info from phone")
+                }
             }
         }
       
