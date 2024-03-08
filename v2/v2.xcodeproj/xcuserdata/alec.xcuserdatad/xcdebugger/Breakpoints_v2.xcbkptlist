@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "68DB97ED-75CE-4122-B180-AB427F4D5293"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5B26953-1EF5-41B4-AE0F-2386AF5DF3A2"
+            shouldBeEnabled = "No"
+            nameForDebugger = "testinghowthisappworks"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "v2/v2App.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "v2App"
+            landmarkType = "14">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42894048-42B4-4CF3-88A6-34179C20693F"
+            shouldBeEnabled = "No"
+            nameForDebugger = "howthiswork"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Phone/sail-v2-phone.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "sail_v1App"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "42894048-42B4-4CF3-88A6-34179C20693F - f991deb7f3fbd655"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "v2.sail_v1App.init() -&gt; v2.sail_v1App"
+                  moduleName = "v2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alec/Documents/Documents%20-%20Alec%E2%80%99s%20MacBook%20Air/SAIL/SAIL-FINAL/v2/Phone/sail-v2-phone.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "42894048-42B4-4CF3-88A6-34179C20693F - cbf5c94df6138d43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "v2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alec/Documents/Documents%20-%20Alec%E2%80%99s%20MacBook%20Air/SAIL/SAIL-FINAL/v2/Phone/sail-v2-phone.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

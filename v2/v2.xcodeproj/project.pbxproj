@@ -87,6 +87,7 @@
 		6838EFB02B6BF85800E94268 /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838EFAE2B6BF85500E94268 /* BluetoothView.swift */; };
 		68BEEDC82B7FE85600812B57 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDC72B7FE85600812B57 /* FetchData.swift */; };
 		68BEEDCA2B8AFE2600812B57 /* PlayOnWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEEDC92B8AFE2600812B57 /* PlayOnWatch.swift */; };
+		70026D7A2B92666D00BF94C8 /* PatternSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70026D792B92666D00BF94C8 /* PatternSelectorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		68BEEDBF2B753B4000812B57 /* CreateTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimer.swift; sourceTree = "<group>"; };
 		68BEEDC72B7FE85600812B57 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		68BEEDC92B8AFE2600812B57 /* PlayOnWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayOnWatch.swift; sourceTree = "<group>"; };
+		70026D792B92666D00BF94C8 /* PatternSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternSelectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				6838EEBE2B6BF03D00E94268 /* v2App.swift */,
 				6838EEC22B6BF04000E94268 /* Assets.xcassets */,
 				6838EEC72B6BF04000E94268 /* Persistence.swift */,
+				70026D792B92666D00BF94C8 /* PatternSelectorView.swift */,
 				6838EEC92B6BF04000E94268 /* v2.xcdatamodeld */,
 				6838EEC42B6BF04000E94268 /* Preview Content */,
 			);
@@ -569,6 +572,7 @@
 				6838EF892B6BF4AC00E94268 /* RowingAdditionalStatus2.swift in Sources */,
 				6838EF9F2B6BF4EA00E94268 /* PerformanceMonitor.swift in Sources */,
 				6838EF9D2B6BF4E400E94268 /* C2TimeInterval+Parsing.swift in Sources */,
+				70026D7A2B92666D00BF94C8 /* PatternSelectorView.swift in Sources */,
 				6838EF7B2B6BF47F00E94268 /* ViewController.swift in Sources */,
 				6838EED82B6BF0E700E94268 /* PhoneLandingPage.swift in Sources */,
 				6838EEBF2B6BF03D00E94268 /* v2App.swift in Sources */,

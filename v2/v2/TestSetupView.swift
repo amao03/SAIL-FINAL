@@ -28,12 +28,7 @@ struct TestSetupView: View {
                 }
             }
             .disabled(hasActiveTest)
-            
-            NavigationLink {
-                Text("Watch Haptics View")
-            } label: {
-                Text("Watch Haptics")
-            }
+    
 
         } header: {
             Text("Test Setup")

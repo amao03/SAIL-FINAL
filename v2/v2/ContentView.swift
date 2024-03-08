@@ -75,6 +75,9 @@ struct ContentView: View {
     @State var previousInterval: Interval?
     @State var activeIntervalsArray: [Interval] = []
     @State var concept2monitor:PerformanceMonitor?
+    @State private var abovePattern: MadePattern = MadePatternsList.madePatternsList[4]
+    @State private var atPattern: MadePattern = MadePatternsList.madePatternsList[2]
+    @State private var belowPattern: MadePattern = MadePatternsList.madePatternsList[6]
     @StateObject var fetchData:FetchData = FetchData()
 
     private var timerInterval: TimeInterval = 1;
@@ -99,11 +102,18 @@ struct ContentView: View {
                     fetchData: fetchData
                 )
                 
+                PatternSelectorView(
+                    abovePattern: $abovePattern,
+                    atPattern: $atPattern,
+                    belowPattern: $belowPattern
+                )
+               
                 TestSetupView(
                     subjectId: $subjectId, 
                     protocolName: $protocolName,
                     hasActiveTest: hasActiveTest
                 )
+                
                 
                 Section(header: Text("Rower")) {
                     HStack(alignment: .bottom) {

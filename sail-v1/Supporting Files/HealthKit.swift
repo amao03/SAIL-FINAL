@@ -99,7 +99,7 @@ struct HealthKitData{
                 completion(samples, nil)
             }
             
-        },
+        }
         
         HKHealthStore().execute(sampleQuery)
     }

@@ -70,7 +70,7 @@ class ConnectToWatch: NSObject, ObservableObject {
                 session.sendMessage(data, replyHandler: nil)
             }
             else{
-                print("failed to send haptics because it is not reachable")
+                print("failed to send haptics because watch is not reachable")
             }
         }
         else {

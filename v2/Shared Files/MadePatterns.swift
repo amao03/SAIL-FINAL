@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MadePattern: Hashable, Identifiable, Codable{
     var name: String = ""
-    var id: String { name }
+    var id: Self { self } //changed 03/07/24  from id: String{ name} to id: Self { self } to make it usable with a Picker in PatternSelectorView and ContentView
     var HapticArray: [Haptics] = []
     var duration: Double = 0.5
     var description:String = ""
