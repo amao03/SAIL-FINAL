@@ -31,6 +31,9 @@
 		68A43C142B22EC1A007F7AA9 /* Display_Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A43C132B22EC1A007F7AA9 /* Display_Info.swift */; };
 		68A43C152B22EDDD007F7AA9 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A43BF12B22E32F007F7AA9 /* Haptics.swift */; };
 		68A43C172B22F4DC007F7AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68A43BDF2B22E108007F7AA9 /* Assets.xcassets */; };
+		68A69C7C2CFCFF6200C7D49B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69C7B2CFCFF6100C7D49B /* Test.swift */; };
+		68A69C7D2CFCFFDF00C7D49B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69C7B2CFCFF6100C7D49B /* Test.swift */; };
+		68A69C7F2CFD05A000C7D49B /* SetUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69C7E2CFD059B00C7D49B /* SetUpTest.swift */; };
 		68AF68872C93F2120063CC22 /* Rowing View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AF68862C93F2120063CC22 /* Rowing View.swift */; };
 		68AF68892C93F25F0063CC22 /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AF68882C93F25F0063CC22 /* BluetoothView.swift */; };
 		68AF688B2C93F2750063CC22 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AF688A2C93F2750063CC22 /* FetchData.swift */; };
@@ -144,6 +147,8 @@
 		68A43C0A2B22E990007F7AA9 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		68A43C112B22EB99007F7AA9 /* Watch_Landing_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch_Landing_View.swift; sourceTree = "<group>"; };
 		68A43C132B22EC1A007F7AA9 /* Display_Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display_Info.swift; sourceTree = "<group>"; };
+		68A69C7B2CFCFF6100C7D49B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		68A69C7E2CFD059B00C7D49B /* SetUpTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpTest.swift; sourceTree = "<group>"; };
 		68AF68862C93F2120063CC22 /* Rowing View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rowing View.swift"; sourceTree = "<group>"; };
 		68AF68882C93F25F0063CC22 /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
 		68AF688A2C93F2750063CC22 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
@@ -255,6 +260,7 @@
 				68A43BEB2B22E1B4007F7AA9 /* sail-v1.entitlements */,
 				68A43BC72B22E08C007F7AA9 /* sail_v1App.swift */,
 				68A43BEE2B22E276007F7AA9 /* Phone_Landing_View.swift */,
+				68A69C7E2CFD059B00C7D49B /* SetUpTest.swift */,
 				68EFE3DA2C62941100B4B5A9 /* Direction.swift */,
 				68EFE3DC2C62953A00B4B5A9 /* Compass.swift */,
 				68EFE3DE2C62978F00B4B5A9 /* Altitude.swift */,
@@ -293,6 +299,7 @@
 		68A43BF02B22E317007F7AA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				68A69C7B2CFCFF6100C7D49B /* Test.swift */,
 				68A43C0A2B22E990007F7AA9 /* Calculations.swift */,
 				68A43BF12B22E32F007F7AA9 /* Haptics.swift */,
 				68A43BF42B22E44D007F7AA9 /* Patterns.swift */,
@@ -573,6 +580,7 @@
 				68AF694F2C93FF5B0063CC22 /* PerformanceMonitorStore.swift in Sources */,
 				68AF68872C93F2120063CC22 /* Rowing View.swift in Sources */,
 				68AF69422C93FF5B0063CC22 /* RowingAdditionalStrokeData.swift in Sources */,
+				68A69C7D2CFCFFDF00C7D49B /* Test.swift in Sources */,
 				68AF69402C93FF5B0063CC22 /* RowingAdditionalStatus1.swift in Sources */,
 				68AF694E2C93FF5B0063CC22 /* Service.swift in Sources */,
 				68AF68F32C93F5080063CC22 /* TestingCode.swift in Sources */,
@@ -583,6 +591,7 @@
 				68AF68E62C93F3440063CC22 /* Subject.swift in Sources */,
 				68AF693B2C93FF5B0063CC22 /* C2TimeInterval+Parsing.swift in Sources */,
 				68AF69302C93FF5B0063CC22 /* WorkoutType.swift in Sources */,
+				68A69C7F2CFD05A000C7D49B /* SetUpTest.swift in Sources */,
 				68AF69392C93FF5B0063CC22 /* C2Speed+Parsing.swift in Sources */,
 				68AF69462C93FF5B0063CC22 /* RowingIntervalData.swift in Sources */,
 				68A43BF52B22E44D007F7AA9 /* Patterns.swift in Sources */,
@@ -614,6 +623,7 @@
 				68A43C082B22E8D2007F7AA9 /* Extended_Session.swift in Sources */,
 				68EFE3E22C62A73F00B4B5A9 /* TimerControls_Extension.swift in Sources */,
 				68A43C122B22EB99007F7AA9 /* Watch_Landing_View.swift in Sources */,
+				68A69C7C2CFCFF6200C7D49B /* Test.swift in Sources */,
 				68A43BFF2B22E519007F7AA9 /* Data_Types.swift in Sources */,
 				68A43BF92B22E47E007F7AA9 /* Made_Patterns.swift in Sources */,
 				68A43BF32B22E32F007F7AA9 /* Haptics.swift in Sources */,
@@ -792,7 +802,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Alice.v1Sail4;
+				PRODUCT_BUNDLE_IDENTIFIER = Alice.v1SailF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -857,13 +867,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow to share health info";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow to update health info";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Alice.v1Sail4;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Alice.v1SailF;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Alice.v1Sail4.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = Alice.v1SailF.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -892,7 +902,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow to share health info";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow to update health info";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Alice.v1Sail4;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Alice.v1SailF;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

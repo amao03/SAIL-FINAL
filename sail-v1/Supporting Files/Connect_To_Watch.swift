@@ -15,7 +15,8 @@ final class ConnectToWatch: NSObject, ObservableObject {
     static let connect = ConnectToWatch()
     public let session = WCSession.default
     
-    @Published var pattern:Pattern = Pattern()
+//    @Published var pattern:Pattern = Pattern()
+    @Published var test:Test = Test()
     @Published var receivedInitial:Bool = false
     @Published var altitude:Int = 0
     @Published var direction:Int = 0
@@ -50,6 +51,16 @@ final class ConnectToWatch: NSObject, ObservableObject {
             let data:[String:Any] = ["data":sendObject.encoder()]
             let _ = try session.updateApplicationContext(data)
             print("sent pattern")
+        } catch {
+            print("failed to send haptics because it is not reachable")
+        }
+    }
+    
+    public func sendDataToWatch(sendObject: Test){
+        do {
+            let data:[String:Any] = ["test":sendObject.encoder()]
+            let _ = try session.updateApplicationContext(data)
+            print("sent test")
         } catch {
             print("failed to send haptics because it is not reachable")
         }
@@ -94,39 +105,6 @@ final class ConnectToWatch: NSObject, ObservableObject {
                 print("Not Reachable")
             }
     }
-    
-    // Convert Data from phone to a Pattern object to be set in TimerControls
-    public func dataReceivedFromPhone(_ info:[String:Any]) {
-        if !session.isReachable{
-            Swift.print("couldn't retrieve data from phone")
-            return
-        }
-        print("received")
-        DispatchQueue.main.async {
-            if let data = info["data"] as? Data {
-                let decodedPattern = Pattern.decoder(data)
-                self.pattern = decodedPattern
-                self.receivedInitial = true
-                self.updating = true
-                print("received pattern: \(self.pattern)")
-            }
-            
-            if let alt = info["altitude"] as? Int {
-                self.altitude = alt
-                print("received alt: \(self.altitude)")
-            }
-            
-            if let receivedDirection = info["direction"] as? Int {
-                self.direction = receivedDirection
-                print("received direction: \(self.direction)")
-            }
-            
-            if let receivedDirection = info["rower"] as? Int {
-                self.rower = receivedDirection
-                print("received rower: \(self.rower)")
-            }
-        }
-    }
 }
 
 
@@ -148,18 +126,25 @@ extension ConnectToWatch: WCSessionDelegate{
     
     func session(_ session: WCSession, didReceiveMessage info: [String : Any]) {
 //        print("did receive") 
-        dataReceivedFromPhone(info)
+//        dataReceivedFromPhone(info)
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]){
-        print("didReceiveApplicationContext")
-        print("received")
-        if let data = applicationContext["data"] as? Data {
-            let decodedPattern = Pattern.decoder(data)
-            self.pattern = decodedPattern
+
+//        if let data = applicationContext["data"] as? Data {
+//            let decodedPattern = Pattern.decoder(data)
+//            self.pattern = decodedPattern
+//            self.receivedInitial = true
+//            self.updating = true
+//            print("received pattern: \(self.pattern)")
+//        }
+        
+        if let data = applicationContext["test"] as? Data {
+            let decodedTest = Test.decoder(data)
+            self.test = decodedTest
             self.receivedInitial = true
             self.updating = true
-            print("received pattern: \(self.pattern)")
+            print("received test: \(self.test)")
         }
         
         if let alt = applicationContext["altitude"] as? Int {

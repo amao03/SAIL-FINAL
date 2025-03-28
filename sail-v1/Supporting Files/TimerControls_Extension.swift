@@ -9,7 +9,7 @@ import Foundation
 
 extension TimerControls{
     func setCurrentValue(){
-        let type = connector.pattern.type
+        let type = connector.test.patternObject.type
         
         switch (type){
         case DataType.distance, DataType.heartrate, DataType.cycling:
@@ -47,7 +47,7 @@ extension TimerControls{
     }
     
     func determinePattern(){
-        switch (connector.pattern.type){
+        switch (connector.test.patternObject.type){
         case DataType.fake, DataType.random:
             setCurrentFakePattern()
         default:
@@ -56,42 +56,54 @@ extension TimerControls{
     }
     
     func setCurrentPattern(){
-        let target = connector.pattern.target
+        let target = connector.test.startVal
         
-        if currentData < (target - connector.pattern.range){
-            currPattern = connector.pattern.underPattern.HapticArray
-            timeBetween = connector.pattern.underPattern.duration
+        if currentData < (target - connector.test.underRange){
+            currPattern = connector.test.patternObject.underPattern.HapticArray
+            timeBetween = connector.test.patternObject.underPattern.duration
             colorState = AnimationState.under
         }
-        else if currentData > (target + connector.pattern.range){
-            currPattern = connector.pattern.abovePattern.HapticArray
-            timeBetween = connector.pattern.abovePattern.duration
+        else if currentData > (target + connector.test.aboveRange){
+            currPattern = connector.test.patternObject.abovePattern.HapticArray
+            timeBetween = connector.test.patternObject.abovePattern.duration
             colorState = AnimationState.above
         }
         else {
-            currPattern = connector.pattern.atPattern.HapticArray
-            timeBetween = connector.pattern.atPattern.duration
+            currPattern = connector.test.patternObject.atPattern.HapticArray
+            timeBetween = connector.test.patternObject.atPattern.duration
             colorState = AnimationState.at
         }
-//        print("Set Pattern: \(currPattern)   timeBetween: \(timeBetween)")
+        print("Set Pattern: \(colorState)   target: \(target)")
     }
     
     func setCurrentFakePattern(){
         if currentData == 0{
-            currPattern = connector.pattern.underPattern.HapticArray
-            timeBetween = connector.pattern.underPattern.duration
+            currPattern = connector.test.patternObject.underPattern.HapticArray
+            timeBetween = connector.test.patternObject.underPattern.duration
             colorState = AnimationState.under
         }
         else if currentData == 2{
-            currPattern = connector.pattern.abovePattern.HapticArray
-            timeBetween = connector.pattern.abovePattern.duration
+            currPattern = connector.test.patternObject.abovePattern.HapticArray
+            timeBetween = connector.test.patternObject.abovePattern.duration
             colorState = AnimationState.above
         }
         else {
-            currPattern = connector.pattern.atPattern.HapticArray
-            timeBetween = connector.pattern.atPattern.duration
+            currPattern = connector.test.patternObject.atPattern.HapticArray
+            timeBetween = connector.test.patternObject.atPattern.duration
             colorState = AnimationState.at
         }
         print("Set Pattern: \(currPattern)   timeBetween: \(timeBetween)")
+    }
+    
+    func updateTarget(){
+        let random = Bool.random()
+        
+        if random{
+            connector.test.startVal = connector.test.target + connector.test.step
+        } else{
+            connector.test.startVal = connector.test.target - connector.test.step
+        }
+        
+        print("Update target: \(connector.test.startVal)")
     }
 }

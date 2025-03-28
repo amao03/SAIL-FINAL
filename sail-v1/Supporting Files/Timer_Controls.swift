@@ -27,6 +27,7 @@ final class TimerControls: NSObject, ObservableObject{
     var overallTimer: Timer?
     var currentTimer: Timer?
     var startTime = CFAbsoluteTimeGetCurrent()
+    var counter = 0
     
     // Deals with stopping timer early and displaying start/stop button
     public func toggleEnd(){
@@ -43,14 +44,15 @@ final class TimerControls: NSObject, ObservableObject{
         determinePattern()
         startCurrentTimer()
         
-        overallTimer = Timer.scheduledTimer(timeInterval: connector.pattern.timeOverall, target: self, selector: #selector(fireOverallTimer), userInfo: nil, repeats: true)
+        //updates value every 2 secs
+        overallTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(fireOverallTimer), userInfo: nil, repeats: true)
     }
     
     // Plays a specific haptic pattern for a given amount of time
     func startCurrentTimer(){
         print("start current timer")
         if currPattern.count == 0{
-            Timer.scheduledTimer(withTimeInterval: connector.pattern.timeOverall, repeats: false) { timer in
+            Timer.scheduledTimer(withTimeInterval: connector.test.duration, repeats: false) { timer in
             }
             return
         }
@@ -69,11 +71,7 @@ final class TimerControls: NSObject, ObservableObject{
             print()
         }
         
-        setCurrentValue()
-        determinePattern()
-        startCurrentTimer()
-        
-        if (self.connector.pattern.type == DataType.fake && fakeDataIndex >= 4){
+        if (self.connector.test.patternObject.type == DataType.fake && fakeDataIndex >= 4){
             print("done with overall")
             overallTimer?.invalidate()
             currentTimer?.invalidate()
@@ -89,12 +87,46 @@ final class TimerControls: NSObject, ObservableObject{
             currentTimer?.invalidate()
             fakeDataIndex = 0
             return
+        } else if (connector.test.name == "Endurance" || connector.test.name == "Pyramid") && connector.test.duration <= Double(counter){
+            print("done with overall")
+            self.ExtendedSess.stopExtendedSession()
+            self.end = true
+            overallTimer?.invalidate()
+            currentTimer?.invalidate()
+            fakeDataIndex = 0
+            
+            return
+        } else if (connector.test.name == "Step") && connector.test.startVal >= connector.test.endVal{
+            print("done with overall")
+            self.ExtendedSess.stopExtendedSession()
+            self.end = true
+            overallTimer?.invalidate()
+            currentTimer?.invalidate()
+            fakeDataIndex = 0
+            return
         }
+        
+        
+        if connector.test.name == "Step" && connector.test.duration < Double(2 * counter){ //update startVal every duration
+            counter = 0
+            connector.test.startVal += connector.test.step
+        }
+        
+        if connector.test.name == "Pyramid" && connector.test.duration < Double(2 * counter){ //update startVal every duration
+            counter = 0
+            updateTarget()
+        }
+        
+        setCurrentValue()
+        determinePattern()
+        startCurrentTimer()
+        print(counter)
+        counter += 1
     }
     
     @objc func fireCurrentTimer(){
         let elapsedTime = CFAbsoluteTimeGetCurrent() - startTime
-        if elapsedTime >= self.connector.pattern.timeOverall {
+        if elapsedTime >= self.connector.test.duration {
             currentTimer?.invalidate()
             currPatternIndex = 0
             print("end current timer")

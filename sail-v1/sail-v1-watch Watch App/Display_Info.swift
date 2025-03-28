@@ -10,25 +10,27 @@ import Foundation
 import SwiftUI
 
 struct DisplayInfo:View{
-     var currPattern:Pattern!
+     var currTest:Test!
     
     var body: some View{
         ScrollView{
             VStack(alignment: .leading){
+                Text("**Test:** \(currTest.name)")
                 Group{
-                    Text("**Under Pattern:** \n \(currPattern.underPattern.description)")
+                    Text("**Above Pattern:** \n \(currTest.patternObject.abovePattern.description)")
                     Spacer()
-                    Text("**At Pattern:** \n \(currPattern.atPattern.description)")
+                    Text("**At Pattern:** \n \(currTest.patternObject.atPattern.description)")
                     Spacer()
-                    Text("**Above Pattern:** \n \(currPattern.abovePattern.description)")
+                    Text("**Under Pattern:** \n \(currTest.patternObject.underPattern.description)")
                 }
                 Spacer()
-                
-                Text("**Overall Time:** \(String(format: "%.2f", currPattern.timeOverall))")
-                Spacer()
-                Text("**Type:** \(currPattern.type)")
-                Text("**Target:** \(String(format: "%.2f", currPattern.target))")
-                Text("**Range:** \(String(format: "%.2f", currPattern.range))")
+                Text("**Type:** \(currTest.patternObject.type)")
+                Text("**Start Val:** \(String(format: "%.2f", currTest.startVal))")
+                Text("**End Val:** \(String(format: "%.2f", currTest.endVal))")
+                Text("**Step:** \(String(format: "%.2f", currTest.step))")
+                Text("**Duration:** \(String(format: "%.2f", currTest.duration))")
+                Text("**Under:** \(String(format: "%.2f", currTest.underRange))")
+                Text("**Above:** \(String(format: "%.2f", currTest.aboveRange))")
             }
         }
     }

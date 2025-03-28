@@ -65,7 +65,7 @@ struct Watch_Landing_View : View {
                                 let _ = self.update()
                                 Text("updating...")
                             }
-                            NavigationLink(destination: DisplayInfo(currPattern: connector.pattern)){
+                            NavigationLink(destination: DisplayInfo(currTest: connector.test)){
                                 Text("View Patterns")
                             }
                             if timerObj.end{

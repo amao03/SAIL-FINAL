@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Phone_Landing_View : View{
     var connector = ConnectToWatch.connect
-    @State var patternObject = Pattern()
+    @State var currTest = Test()
     
     @State private var hapticsListBool:Bool = false
     
@@ -22,103 +22,146 @@ struct Phone_Landing_View : View{
     var fetching = FetchData.sharedInstance
     @State var powerDisposable: Disposable? = nil
     
+    
     var hasConnectedRower: Bool {
         return concept2monitor != nil;
     }
     
     private func attachObservers(){
-
+        
         if(hasConnectedRower) {
             
-//            self.concept2monitor = concept2monitor
+            //            self.concept2monitor = concept2monitor
             print("not nill")
             powerDisposable = concept2monitor!.strokePower.attach(observer: {
-              (currPow:C2Power) -> Void in
+                (currPow:C2Power) -> Void in
                 DispatchQueue.global(qos: .background).async {
                     DispatchQueue.main.async {
                         currPower = currPow
+                    }
                 }
-              }
             })
         }
         print("no rower")
         
-
+        
     }
-
-
+    
+    
     var body: some View {
         NavigationView{
             Form{
-                Picker("select type", selection: $patternObject.type) {
+                Picker("select type", selection: $currTest.patternObject.type) {
                     ForEach(DataType.allCases, id: \.self) { currCase in
                         Text(String(describing: currCase))
                     }
                 }
-               
-                if patternObject.type == DataType.rower{
+                
+                if currTest.patternObject.type == DataType.rower{
                     BluetoothView(concept2monitor: $concept2monitor)
                 }
                 
-                HStack{
-                    Text("Target")
-                    TextField("",value: $patternObject.target, format: .number).multilineTextAlignment(.trailing)
-                }
+                Section("Select Test", content: {
+                    NavigationLink(destination: {
+                        SetUpTest(selectedItems: $currTest)
+                    }, label: {
+                        Text("Select Test")
+                    })
+                    Text("**Selected:** \(currTest.name)")
+                })
                 
-                HStack{
-                    Text("Range")
-                    TextField("",value: $patternObject.range, format: .number).multilineTextAlignment(.trailing)
-                }
+                Section("Test Configs", content: {
+                    HStack{
+                        Text("Starting threshold")
+                        TextField("starting value",value: $currTest.startVal, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                    }
+                    
+                    HStack{
+                        Text("End threshold")
+                        TextField("End value",value: $currTest.endVal, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
+                    HStack{
+                        Text("Step")
+                        TextField("step",value: $currTest.step, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
+                    HStack{
+                        Text("Duration between steps")
+                        TextField("duration",value: $currTest.duration, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
+                    HStack{
+                        Text("Target")
+                        TextField("duration",value: $currTest.target, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
+                 
+                    
+                })
                 
                 Section("Above Pattern", content: {
                     NavigationLink(destination: {
-                        MadeHapticsSelector(selectedItems: $patternObject.abovePattern)
+                        MadeHapticsSelector(selectedItems: $currTest.patternObject.abovePattern)
                     }, label: {
                         Text("Select haptics")
                     })
-                    Text("**Selected:** \(patternObject.abovePattern.name)")
-                    Text("**Description:** \(patternObject.abovePattern.description)")
+                    Text("**Selected:** \(currTest.patternObject.abovePattern.name)")
+                    Text("**Description:** \(currTest.patternObject.abovePattern.description)")
                 })
                 
                 Section("At Pattern", content: {
+                    HStack{
+                        Text("Above range")
+                        TextField("duration",value: $currTest.aboveRange, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
+                    Spacer()
                     NavigationLink(destination: {
-                        MadeHapticsSelector(selectedItems: $patternObject.atPattern)
+                        MadeHapticsSelector(selectedItems: $currTest.patternObject.atPattern)
                     }, label: {
                         Text("Select haptics")
                     })
-                    Text("**Selected:** \(patternObject.atPattern.name)")
-                    Text("**Description:** \(patternObject.atPattern.description)")
+                    Text("**Selected:** \(currTest.patternObject.atPattern.name)")
+                    Text("**Description:** \(currTest.patternObject.atPattern.description)")
+                    Spacer()
+                    HStack{
+                        Text("Under range")
+                        TextField("duration",value: $currTest.underRange, format: .number)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                    }
                 })
                 
                 Section("Under Pattern", content: {
                     NavigationLink(destination: {
-                        MadeHapticsSelector(selectedItems: $patternObject.underPattern)
+                        MadeHapticsSelector(selectedItems: $currTest.patternObject.underPattern)
                     }, label: {
                         Text("Select haptics")
                     })
-                    Text("**Selected:** \(patternObject.underPattern.name)")
-                    Text("**Description:** \(patternObject.underPattern.description)")
+                    Text("**Selected:** \(currTest.patternObject.underPattern.name)")
+                    Text("**Description:** \(currTest.patternObject.underPattern.description)")
                 })
                 
-                Section("Overall Time", content: {
-                    HStack{
-                        Text("Between each pattern")
-                        TextField("",value: $patternObject.timeOverall, format: .number).multilineTextAlignment(.trailing)
-                    }
-                })
-                
-                
-                if (!hasConnectedRower && patternObject.type == DataType.rower){
+                if (!hasConnectedRower && currTest.patternObject.type == DataType.rower){
                     Text("Connect to Rower")
                 }else{
                     Button(action:{
-                        connector.sendDataToWatch(sendObject: patternObject)
+                        connector.sendDataToWatch(sendObject: currTest)
+//                        connector.sendDataToWatch(sendObject: currTest.patternObject)
                     }){
                         Text("Send data to Watch")
                     }
                 }
                 
-                if patternObject.type == DataType.altitude{
+                if currTest.patternObject.type == DataType.altitude{
                     Text("Your altitude is \(self.compass.altitude)")
                         .font(.headline)
                         .padding()
@@ -127,7 +170,7 @@ struct Phone_Landing_View : View{
                     let _ = connector.session.sendMessage(data, replyHandler: nil)
                 }
                 
-                if patternObject.type == DataType.direction{
+                if currTest.patternObject.type == DataType.direction {
                     Text("Your direction is \(self.compass.direction)")
                         .font(.headline)
                         .padding()
@@ -135,7 +178,7 @@ struct Phone_Landing_View : View{
                     let _ = connector.sendDirection(sendObject: self.compass.direction)
                 }
                 
-                if (patternObject.type == DataType.rower){
+                if (currTest.patternObject.type == DataType.rower){
                     Text("Your power is \(fetching.strokePower)")
                         .font(.headline)
                         .padding()
@@ -145,7 +188,7 @@ struct Phone_Landing_View : View{
         }.onAppear(perform: connector.activateSession)
     }
     
-
+    
 }
 
 
